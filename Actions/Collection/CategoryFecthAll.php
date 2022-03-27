@@ -12,6 +12,6 @@ class CategoryFecthAll
 {
     public function run() : Collection
     {
-        return Category::all();
+        return Category::all()->sortBy('id');
     }
 }
