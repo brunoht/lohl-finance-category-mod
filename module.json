@@ -1,0 +1,13 @@
+{
+    "name": "FinanceCategoryMod",
+    "alias": "financecategorymod",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\FinanceCategoryMod\\Providers\\FinanceCategoryModServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
