@@ -64,7 +64,7 @@ class CategoryObjUpdateCmd extends Command
         $this->categoryFetch->setId( $this->argument('category-id') );
         $category = $this->categoryFetch->run();
 
-        // prepare the function to update client
+        // prepare the function to update the Category
         $store = function ( $category ) {
             try {
                 $this->categoryUpdate->setCategory( $category );
@@ -77,7 +77,7 @@ class CategoryObjUpdateCmd extends Command
             }
         };
 
-        // starts the menu on terminal
+        // start the menu on terminal
         return $this->menu( $category, $store );
     }
 

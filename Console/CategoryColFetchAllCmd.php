@@ -26,13 +26,19 @@ class CategoryColFetchAllCmd extends Command
     protected $description = 'List all stored Categories.';
 
     /**
+     * @var CategoryFecthAll
+     */
+    private CategoryFecthAll $categoryFetchAll;
+
+    /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(CategoryFecthAll $categoryFecthAll)
     {
         parent::__construct();
+        $this->categoryFetchAll = $categoryFecthAll;
     }
 
     /**
@@ -42,8 +48,7 @@ class CategoryColFetchAllCmd extends Command
      */
     public function handle()
     {
-        $action = new CategoryFecthAll();
-        $this->listHandler( $action->run() );
+        $this->listHandler( $this->categoryFetchAll->run() );
         return 0;
     }
 

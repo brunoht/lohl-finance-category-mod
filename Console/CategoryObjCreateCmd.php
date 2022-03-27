@@ -48,6 +48,7 @@ class CategoryObjCreateCmd extends Command
      */
     public function handle()
     {
+        // prepare the function to create the Category
         $create = function ( $category ) {
             try {
                 $this->categoryCreate->setCategory($category);
@@ -60,6 +61,7 @@ class CategoryObjCreateCmd extends Command
             }
         };
 
+        // start the menu on terminal
         $this->menu( Category::getInstance(), $create );
     }
 

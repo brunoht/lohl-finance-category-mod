@@ -23,13 +23,19 @@ class CategoryBulkDeleteCmd extends Command
     protected $description = 'Delete all stored Categories.';
 
     /**
+     * @var CategoryBulkDelete
+     */
+    private CategoryBulkDelete $categoryBulkDelete;
+
+    /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(CategoryBulkDelete $categoryBulkDelete)
     {
         parent::__construct();
+        $this->categoryBulkDelete = $categoryBulkDelete;
     }
 
     /**
@@ -39,8 +45,7 @@ class CategoryBulkDeleteCmd extends Command
      */
     public function handle()
     {
-        $action = new CategoryBulkDelete();
-        $action->run();
+        $this->categoryBulkDelete->run();
         $this->info('SUCCESS');
         return 0;
     }

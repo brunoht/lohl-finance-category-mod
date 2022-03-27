@@ -24,13 +24,19 @@ class CategoryObjDeleteCmd extends Command
     protected $description = 'Delete a stored Category.';
 
     /**
+     * @var CategoryDelete
+     */
+    private CategoryDelete $categoryDelete;
+
+    /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(CategoryDelete $categoryDelete)
     {
         parent::__construct();
+        $this->categoryDelete = $categoryDelete;
     }
 
     /**
@@ -41,9 +47,8 @@ class CategoryObjDeleteCmd extends Command
     public function handle()
     {
         try {
-            $action = new CategoryDelete();
-            $action->setId( $this->argument('category-id') );
-            $action->run();
+            $this->categoryDelete->setId( $this->argument('category-id') );
+            $this->categoryDelete->run();
             $this->info('SUCCESS');
         } catch (\Error $e) {
             $this->error('[ ERROR ] NOT FOUND');
